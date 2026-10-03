@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TEAM 403</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  color:white;
+  background:
+    radial-gradient(circle at top,#174b3d,#071510 45%,#020504);
+  overflow-x:hidden;
+}
+
+.container{
+  width:min(92%,650px);
+  margin:auto;
+  padding:30px 0 50px;
+  text-align:center;
+}
+
+/* العنوان */
+h1{
+  font-size:42px;
+  letter-spacing:4px;
+  margin:10px 0 5px;
+}
+
+.subtitle{
+  color:#a9cfc4;
+  margin-bottom:20px;
+}
+
+/* الأنيميشن */
+.moving-name{
+  overflow:hidden;
+  white-space:nowrap;
+  margin:20px -5%;
+  padding:12px 0;
+  background:rgba(255,255,255,.05);
+  border-radius:15px;
+}
+
+.moving-name span{
+  display:inline-block;
+  padding-right:100%;
+  animation:moveText 9s linear infinite;
+  color:#9fffe1;
+  font-size:19px;
+  font-weight:bold;
+}
+
+@keyframes moveText{
+  from{
+    transform:translateX(100%);
+  }
+  to{
+    transform:translateX(-100%);
+  }
+}
+
+/* الأقسام */
+.top-sections{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:25px 0;
+}
+
+.top-btn{
+  border:0;
+  padding:15px 5px;
+  border-radius:15px;
+  color:white;
+  background:linear-gradient(135deg,#123d33,#08745b);
+  font-size:15px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.top-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* المحتوى */
+.section{
+  margin:18px 0;
+  padding:20px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+}
+
+.section h2{
+  margin-bottom:15px;
+}
+
+.btn{
+  display:block;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(135deg,#123f34,#08745b);
+  padding:15px;
+  margin:10px 0;
+  border-radius:14px;
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(0,255,170,.18);
+}
+
+.dev{
+  background:linear-gradient(135deg,#28183c,#552b78);
+}
+
+/* إخفاء الأقسام الخاصة */
+.private{
+  display:none;
+}
+
+.developer-name{
+  color:#c9a7ff;
+  font-size:18px;
+  margin-bottom:15px;
+}
+
+footer{
+  margin-top:30px;
+  color:#829891;
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>TEAM 403</h1>
+  <p class="subtitle">أهلاً بيك في موقع TEAM 403</p>
+
+  <!-- الأنيميشن الوحيد -->
+  <div class="moving-name">
+    <span>اليكسير الأجنبي + بويكا</span>
+  </div>
+
+  <!-- الأقسام الرئيسية -->
+  <div class="top-sections">
+
+    <button class="top-btn" onclick="showSection('general')">
+      🏠 العام
+    </button>
+
+    <button class="top-btn" onclick="adminLogin()">
+      🔐 الأدمن
+    </button>
+
+    <button class="top-btn" onclick="developerLogin()">
+      🛠️ المطور
+    </button>
+
+  </div>
+
+
+  <!-- القسم العام -->
+  <div id="general">
+
+    <div class="section">
+      <h2>📞 التواصل</h2>
+
+      <a class="btn" href="https://wa.me/201559227221">
+        التواصل مع قائد التيم | الكسير الأجنبي
+      </a>
+
+      <a class="btn" href="https://t.me/EXR_AGY_403">
+        Telegram | @EXR_AGY_403
+      </a>
+    </div>
+
+
+    <div class="section">
+      <h2>🎁 سحوبات برعاية TEAM 403</h2>
+
+      <a class="btn" href="https://chat.whatsapp.com/FhP1ONJx8Bu5spsV2xotOq">سحب 1</a>
+      <a class="btn" href="https://chat.whatsapp.com/JPPvgax19Mn0D0n4qrHrxt">سحب 2</a>
+      <a class="btn" href="https://chat.whatsapp.com/EDC2KpVRa4oHTcCwFDLOEX">سحب 3</a>
+      <a class="btn" href="https://chat.whatsapp.com/HHhFqQimJwA5XSMg7A9l14">سحب 4</a>
+      <a class="btn" href="https://chat.whatsapp.com/GTOqQw8WEjbG8W6uV89k4x">سحب 5</a>
+      <a class="btn" href="https://chat.whatsapp.com/LxDs1Qe66gk8OKgk2iQI58">سحب 6</a>
+      <a class="btn" href="https://chat.whatsapp.com/EMFWTeghLCy7rnzxxnCyph">سحب 7</a>
+      <a class="btn" href="https://chat.whatsapp.com/LIQRaxKEs7p1mjbr7kREEw">سحب 8</a>
+    </div>
+
+
+    <div class="section">
+      <h2>🌐 TEAM 403</h2>
+
+      <a class="btn" href="https://m4637887-web.github.io/TEAM-403/">
+        موقع TEAM 403
+      </a>
+
+      <a class="btn" href="https://whatsapp.com/channel/0029Vb7xmlQBVJkzQoTKnt2v">
+        📢 قناة تشريد برعاية 403
+      </a>
+    </div>
+
+
+    <div class="section">
+      <h2>💬 جروبات TEAM 403</h2>
+
+      <a class="btn" href="https://chat.whatsapp.com/HyC38KSiUAyFZJD4k7zzPa">
+        💻 جروب التعليم والبرمجة
+      </a>
+
+      <a class="btn" href="https://chat.whatsapp.com/LMo3qv7v1qpCjgs8TTo5iV">
+        💬 رغي TEAM 403
+      </a>
+    </div>
+
+
+    <div class="section">
+      <h2>🆘 الدعم والشكاوى</h2>
+
+      <a class="btn" href="https://wa.me/201559227221?text=شكوى%20أو%20اقتراح">
+        شكوى أو اقتراح
+      </a>
+
+      <a class="btn" href="https://wa.me/201559227221?text=عندي%20مشكلة">
+        عندي مشكلة
+      </a>
+    </div>
+
+  </div>
+
+
+  <!-- قسم الأدمن -->
+  <div id="admin" class="section private">
+
+    <h2>🔐 قسم الأدمن</h2>
+
+    <p>أهلاً بيك في قسم إدارة TEAM 403</p>
+
+    <a class="btn" href="https://wa.me/201559227221">
+      📞 التواصل مع قائد التيم
+    </a>
+
+  </div>
+
+
+  <!-- قسم المطور -->
+  <div id="developer" class="section private">
+
+    <h2>🛠️ قسم المطور</h2>
+
+    <div class="developer-name">
+      المطور: boykaa
+    </div>
+
+    <a class="btn dev" href="https://github.com/m4637887-web/TEAM-403">
+      👨‍💻 GitHub
+    </a>
+
+    <a class="btn dev" href="https://m4637887-web.github.io/TEAM-403/">
+      🌐 فتح الموقع
+    </a>
+
+  </div>
+
+
+  <footer>
+    TEAM 403 © 2026
+  </footer>
+
+</div>
+
+
+<script>
+
+/* إظهار القسم العام */
+function showSection(section){
+
+  document.getElementById("general").style.display="block";
+
+  document.getElementById("admin").style.display="none";
+
+  document.getElementById("developer").style.display="none";
+
+}
+
+
+/* دخول الأدمن */
+function adminLogin(){
+
+  let password = prompt("🔐 اكتب باسورد الأدمن");
+
+  if(password === "403403"){
+
+    document.getElementById("general").style.display="none";
+
+    document.getElementById("developer").style.display="none";
+
+    document.getElementById("admin").style.display="block";
+
+  }else{
+
+    alert("❌ الباسورد غلط");
+
+  }
+
+}
+
+
+/* دخول المطور */
+function developerLogin(){
+
+  let password = prompt("🛠️ اكتب باسورد المطور");
+
+  if(password === "0112233"){
+
+    document.getElementById("general").style.display="none";
+
+    document.getElementById("admin").style.display="none";
+
+    document.getElementById("developer").style.display="block";
+
+  }else{
+
+    alert("❌ الباسورد غلط");
+
+  }
+
+}
+
+</script>
+
+</body>
+  </html>
