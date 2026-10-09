@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM 403</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(10, 10, 15, 0.88), rgba(10, 10, 15, 0.92)), url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Glowing Effects & Glassmorphic UI */
+        .glass-card {
+            background: rgba(20, 20, 30, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glow-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Typing & Glow Animation for Text */
+        .animated-text {
+            background: linear-gradient(90deg, #ff4b4b, #ff8533, #ff4b4b);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .pulse-btn {
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+<body class="pb-12">
+
+    <!-- Audio Player Controller -->
+    <div class="fixed bottom-4 left-4 z-50">
+        <button id="musicToggle" onclick="toggleAudio()" class="pulse-btn flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-5 rounded-full shadow-2xl transition duration-300">
+            <i id="musicIcon" class="fas fa-music text-xl"></i>
+            <span id="musicText">شغل ي حبي🤤</span>
+        </button>
+        <audio id="bgMusic" loop preload="auto">
+            <source src="song.mp3" type="audio/mpeg">
+            متصفحك لا يدعم تشغيل الصوت.
+        </audio>
+    </div>
+
+    <div class="container mx-auto px-4 max-w-4xl">
+        
+        <!-- Header / Main Profile Section -->
+        <header class="text-center pt-8 pb-6">
+            <div class="relative inline-block mb-4">
+                <img src="logo.jpg" alt="TEAM 403 Logo" class="w-36 h-36 rounded-full object-cover border-4 border-red-600 shadow-2xl mx-auto">
+                <span class="absolute bottom-1 right-1 bg-red-600 text-white text-xs px-2 py-1 rounded-full font-bold">403</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black tracking-wider text-white mb-2">TEAM 403</h1>
+            <h2 class="text-2xl font-bold animated-text mb-6">اليكسير الأجنبي</h2>
+
+            <!-- Main Navigation Tabs -->
+            <div class="flex justify-center gap-2 md:gap-4 my-6">
+                <button onclick="switchTab('public')" id="tab-public" class="tab-btn active px-6 py-2.5 rounded-xl font-bold glass-card text-red-500 border-b-2 border-red-500 transition-all duration-300">
+                    <i class="fas fa-globe ml-2"></i>العام
+                </button>
+                <button onclick="switchTab('admin')" id="tab-admin" class="tab-btn px-6 py-2.5 rounded-xl font-bold glass-card text-gray-300 hover:text-white transition-all duration-300">
+                    <i class="fas fa-user-shield ml-2"></i>الأدمن
+                </button>
+                <button onclick="switchTab('dev')" id="tab-dev" class="tab-btn px-6 py-2.5 rounded-xl font-bold glass-card text-gray-300 hover:text-white transition-all duration-300">
+                    <i class="fas fa-code ml-2"></i>المطور
+                </button>
+            </div>
+        </header>
+
+        <!-- SECTION 1: PUBLIC (العام) -->
+        <main id="section-public" class="tab-content space-y-8">
+
+            <!-- Team Members Section -->
+            <div class="glass-card rounded-2xl p-6 border-t-4 border-red-600">
+                <h3 class="text-xl font-bold mb-4 text-red-500 flex items-center gap-2">
+                    <i class="fas fa-users"></i> أعضاء TEAM 403
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Member 1 -->
+                    <div class="bg-gray-900/60 p-4 rounded-xl flex items-center justify-between border border-gray-800">
+                        <div>
+                            <p class="font-bold text-lg text-white">اليكسير الاجنبي</p>
+                            <p class="text-xs text-red-400">قائد التيم (@EXR_AGY)</p>
+                        </div>
+                        <a href="https://t.me/EXR_AGY_403" target="_blank" class="glow-button bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-2 px-3 rounded-lg flex items-center gap-1">
+                            <i class="fab font-normal fa-telegram"></i> تع ع شاتي
+                        </a>
+                    </div>
+                    <!-- Member 2 -->
+                    <div class="bg-gray-900/60 p-4 rounded-xl flex items-center justify-between border border-gray-800">
+                        <div>
+                            <p class="font-bold text-lg text-white">ميتا</p>
+                            <p class="text-xs text-red-400">تطير ارقام (@wxx.1)</p>
+                        </div>
+                        <a href="https://t.me/wxx_1" target="_blank" class="glow-button bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-2 px-3 rounded-lg flex items-center gap-1">
+                            <i class="fab font-normal fa-telegram"></i> تع ع شاتي
+                        </a>
+                    </div>
+                    <!-- Member 3 -->
+                    <div class="bg-gray-900/60 p-4 rounded-xl flex items-center justify-between border border-gray-800">
+                        <div>
+                            <p class="font-bold text-lg text-white">ملوتوف</p>
+                            <p class="text-xs text-red-400">سحب بارات (mtv_v7)</p>
+                        </div>
+                        <a href="https://t.me/mtv_v7" target="_blank" class="glow-button bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-2 px-3 rounded-lg flex items-center gap-1">
+                            <i class="fab font-normal fa-telegram"></i> تع ع شاتي
+                        </a>
+                    </div>
+                    <!-- Member 4 -->
+                    <div class="bg-gray-900/60 p-4 rounded-xl flex items-center justify-between border border-gray-800">
+                        <div>
+                            <p class="font-bold text-lg text-white">بويكا</p>
+                            <p class="text-xs text-red-400">متطور مواقع (The_UnCle_Mahm0udd)</p>
+                        </div>
+                        <a href="https://t.me/The_UnCle_Mahm0udd" target="_blank" class="glow-button bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-2 px-3 rounded-lg flex items-center gap-1">
+                            <i class="fab font-normal fa-telegram"></i> تع ع شاتي
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Website Link -->
+            <div class="glass-card rounded-2xl p-6 text-center">
+                <h3 class="text-xl font-bold mb-3 text-white">قسم موقع TEAM 403</h3>
+                <a href="https://m4637887-web.github.io/TEAM-403/" target="_blank" class="glow-button inline-block bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold py-3 px-8 rounded-xl text-lg transition duration-300">
+                    <i class="fas fa-external-link-alt ml-2"></i> موقع TEAM 403
+                </a>
+            </div>
+
+            <!-- WhatsApp Giveaways Section -->
+            <div class="glass-card rounded-2xl p-6">
+                <h3 class="text-xl font-bold mb-4 text-green-400 flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-2xl"></i> سحوبات برعاية TEAM 403
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                    <a href="https://chat.whatsapp.com/FhP1ONJx8Bu5spsV2xotOq" target="_blank" class="bg-gray-900/80 hover:bg-green-600/30 border border-green-500/30 hover:border-green-500 p-3 rounded-xl text-center text-sm font-bold transition duration-300">
+                        مجموعة سحوبات 1
+                    </a>
+                    <a href="https://chat.whatsapp.com/JPPvgax19Mn0D0n4qrHrxt" target="_blank" class="bg-gray-900/80 hover:bg-green-600/30 border border-green-500/30 hover:border-green-500 p-3 rounded-xl text-center text-sm font-bold transition duration-300">
+                        مجموعة سحوبات 2
+                    </a>
+                    <a href="https://chat.whatsapp.com/EDC2KpVRa4oHTcCwFDLOEX" target="_blank" class="bg-gray-900/80 hover:bg-green-600/30 border border-green-500/30 hover:border-green-500 p-3 rounded-xl text-center text-sm font-bold transition duration-300">
+                        مجموعة سحوبات 3
+                    </a>
+                    <a href="https://chat.whatsapp.com/HHhFqQimJwA5XSMg7A9l14" target="_blank" class="bg-gray-900/80 hover:bg-green-600/30 border border-green-500/30 hover:border-green-500 p-3 rounded-xl text-center text-sm font-bold transition duration-300">
+                        مجموعة سحوبات 4
+                    </a>
+                    <a href="https://chat.whatsapp.com/GTOqQw8WEjbG8W6uV89k4x" target="_blank" class="bg-gray-900/80 hover:bg-green-600/30 border border-green-500/30 hover:border-green-500 p-3 rounded-xl text-center text-sm font-bold transition duration-300">
+                        مجموعة سحوبات 5
+                    </a>
+                    <a href="https://chat.whatsapp.com/LxDs1Qe66gk8OKgk2iQI58" target="_blank" class="bg-gray-900/80 hover:bg-green-600/30 border border-green-500/30 hover:border-green-500 p-3 rounded-xl text-center text-sm font-bold transition duration-300">
+                        مجموعة سحوبات 6
+                    </a>
+                    <a href="https://chat.whatsapp.com/EMFWTeghLCy7rnzxxnCyph" target="_blank" class="bg-gray-900/80 hover:bg-green-600/30 border border-green-500/30 hover:border-green-500 p-3 rounded-xl text-center text-sm font-bold transition duration-300">
+                        مجموعة سحوبات 7
+                    </a>
+                    <a href="https://chat.whatsapp.com/LIQRaxKEs7p1mjbr7kREEw" target="_blank" class="bg-gray-900/80 hover:bg-green-600/30 border border-green-500/30 hover:border-green-500 p-3 rounded-xl text-center text-sm font-bold transition duration-300">
+                        مجموعة سحوبات 8
+                    </a>
+                </div>
+            </div>
+
+            <!-- Extra Groups -->
+            <div class="glass-card rounded-2xl p-6">
+                <h3 class="text-xl font-bold mb-4 text-blue-400 flex items-center gap-2">
+                    <i class="fas fa-layer-group"></i> مجموعات إضافية
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="https://chat.whatsapp.com/HyC38KSiUAyFZJD4k7zzPa" target="_blank" class="bg-gray-900/80 border border-blue-500/30 p-4 rounded-xl flex flex-col items-center justify-center hover:border-blue-500 transition duration-300">
+                        <i class="fas fa-code text-2xl text-blue-400 mb-2"></i>
+                        <span class="font-bold text-center">التعليم والبرمجة</span>
+                    </a>
+                    <a href="https://chat.whatsapp.com/LMo3qv7v1qpCjgs8TTo5iV" target="_blank" class="bg-gray-900/80 border border-purple-500/30 p-4 rounded-xl flex flex-col items-center justify-center hover:border-purple-500 transition duration-300">
+                        <i class="fas fa-comments text-2xl text-purple-400 mb-2"></i>
+                        <span class="font-bold text-center">رغي TEAM 403</span>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029Vb7xmlQBVJkzQoTKnt2v" target="_blank" class="bg-gray-900/80 border border-red-500/30 p-4 rounded-xl flex flex-col items-center justify-center hover:border-red-500 transition duration-300">
+                        <i class="fas fa-bullhorn text-2xl text-red-400 mb-2"></i>
+                        <span class="font-bold text-center">قناة تشريد برعاية 403</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="glass-card rounded-2xl p-6 text-center">
+                <h3 class="text-2xl font-bold mb-6 text-white">التواصل مع اليكسير الأجنبي</h3>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="https://wa.me/201559227221" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition duration-300">
+                        <i class="fab fa-whatsapp text-xl"></i> 01559227221
+                    </a>
+                    <a href="https://t.me/EXR_AGY_403" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition duration-300">
+                        <i class="fab fa-telegram text-xl"></i> @EXR_AGY_403
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer Developer Credit -->
+            <footer class="text-center pt-4 text-gray-400 font-bold">
+                المطور: by boykaaa
+            </footer>
+        </main>
+
+        <!-- SECTION 2: ADMIN (الأدمن) -->
+        <section id="section-admin" class="tab-content hidden">
+            <!-- Password Modal/Box -->
+            <div id="admin-login" class="glass-card rounded-2xl p-8 max-w-md mx-auto text-center my-12">
+                <i class="fas fa-lock text-4xl text-red-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4">قسم الأدمن</h3>
+                <p class="text-gray-400 text-sm mb-6">يرجى إدخال كلمة المرور للوصول إلى لوحة التحكم والشكاوى.</p>
+                <input type="password" id="admin-pass-input" placeholder="أدخل كلمة المرور" class="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-xl mb-4 text-center focus:outline-none focus:border-red-500">
+                <button onclick="checkAdminPass()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition duration-300">دخول</button>
+                <p id="admin-error" class="text-red-500 text-sm mt-3 hidden">كلمة المرور غير صحيحة!</p>
+            </div>
+
+            <!-- Admin Content (Form to Send Complaints directly to Backend/Email) -->
+            <div id="admin-content" class="hidden glass-card rounded-2xl p-6 md:p-8">
+                <h3 class="text-2xl font-bold mb-2 text-red-500 text-center">الشكاوي والاقتراحات</h3>
+                <p class="text-gray-400 text-sm text-center mb-6">يمكنك تقديم شكواك أو اقتراحك هنا وسوف تصل فوراً لنظام الأدمن والمطور مع إمكانية الرد عليك.</p>
+                
+                <!-- Formspree Backend Action -->
+                <form action="https://formspree.io/f/xbldvbze" method="POST" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">اسمك الكامل</label>
+                        <input type="text" name="name" required placeholder="اكتب اسمك هنا" class="w-full bg-gray-900/80 border border-gray-700 rounded-xl p-3 text-white focus:outline-none focus:border-red-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">نوع الرسالة / الموضوع</label>
+                        <input type="text" name="subject" required placeholder="شكوى / اقتراح" class="w-full bg-gray-900/80 border border-gray-700 rounded-xl p-3 text-white focus:outline-none focus:border-red-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">المشكلة أو الاقتراح بالتفصيل</label>
+                        <textarea name="message" rows="5" required placeholder="اشرح الشكوى أو الاقتراح التفصيلي..." class="w-full bg-gray-900/80 border border-gray-700 rounded-xl p-3 text-white focus:outline-none focus:border-red-500"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">وسيلة التواصل للرد عليك (رقم الهاتف أو التليجرام)</label>
+                        <input type="text" name="contact_info" required placeholder="مثال: @username أو 010xxxxxxx" class="w-full bg-gray-900/80 border border-gray-700 rounded-xl p-3 text-white focus:outline-none focus:border-red-500">
+                    </div>
+                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition duration-300 flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i> إرسال إلى نظام الأدمن
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECTION 3: DEVELOPER (المطور) -->
+        <section id="section-dev" class="tab-content hidden">
+            <!-- Password Modal/Box -->
+            <div id="dev-login" class="glass-card rounded-2xl p-8 max-w-md mx-auto text-center my-12">
+                <i class="fas fa-code text-4xl text-blue-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4">قسم المطور</h3>
+                <p class="text-gray-400 text-sm mb-6">يرجى إدخال كلمة المرور المخصصة للمطور.</p>
+                <input type="password" id="dev-pass-input" placeholder="أدخل كلمة المرور" class="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-xl mb-4 text-center focus:outline-none focus:border-blue-500">
+                <button onclick="checkDevPass()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition duration-300">دخول</button>
+                <p id="dev-error" class="text-red-500 text-sm mt-3 hidden">كلمة المرور غير صحيحة!</p>
+            </div>
+
+            <!-- Dev Content -->
+            <div id="dev-content" class="hidden glass-card rounded-2xl p-12 text-center my-12 border-2 border-blue-500/50">
+                <i class="fas fa-laptop-code text-6xl text-blue-400 mb-4"></i>
+                <h2 class="text-3xl font-black text-white mb-2">المطور: by boykaaa</h2>
+                <p class="text-gray-400">حقوق التطوير والبرمجة محفوظة لـ TEAM 403</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Audio Toggle Functionality
+        const audio = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicText = document.getElementById('musicText');
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                musicIcon.className = "fas fa-pause text-xl";
+                musicText.innerText = "إيقاف الموسيقى 🎵";
+            } else {
+                audio.pause();
+                musicIcon.className = "fas fa-music text-xl";
+                musicText.innerText = "شغل ي حبي🤤";
+            }
+        }
+
+        // Tab Switching Logic
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            // Remove active classes
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-red-500', 'border-b-2', 'border-red-500');
+                btn.classList.add('text-gray-300');
+            });
+
+            // Show selected tab
+            document.getElementById(`section-${tabName}`).classList.remove('hidden');
+
+            // Highlight active button
+            const activeBtn = document.getElementById(`tab-${tabName}`);
+            activeBtn.classList.add('text-red-500', 'border-b-2', 'border-red-500');
+            activeBtn.classList.remove('text-gray-300');
+        }
+
+        // Admin Password Check (Pass: 403403)
+        function checkAdminPass() {
+            const pass = document.getElementById('admin-pass-input').value;
+            if (pass === "403403") {
+                document.getElementById('admin-login').classList.add('hidden');
+                document.getElementById('admin-content').classList.remove('hidden');
+            } else {
+                document.getElementById('admin-error').classList.remove('hidden');
+            }
+        }
+
+        // Developer Password Check (Pass: 0112233)
+        function checkDevPass() {
+            const pass = document.getElementById('dev-pass-input').value;
+            if (pass === "0112233") {
+                document.getElementById('dev-login').classList.add('hidden');
+                document.getElementById('dev-content').classList.remove('hidden');
+            } else {
+                document.getElementById('dev-error').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
