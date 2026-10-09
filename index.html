@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM 403</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #ff3333;
+            --primary-hover: #cc0000;
+            --bg-dark: rgba(15, 15, 20, 0.85);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-sub: #b3b3b3;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: #0a0a0c url('TEAM403_BG_NEW.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 10px;
+        }
+
+        /* الطبقة الضبابية الخلفية */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(5px);
+            z-index: -1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* الهيدر واللوجو */
+        header {
+            text-align: center;
+            padding: 20px;
+            background: var(--bg-dark);
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .logo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .main-title {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        /* أنيميشن اليكسير الأجنبي */
+        .animated-text {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 5px;
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 5px var(--primary);
+            }
+            100% {
+                transform: scale(1.08);
+                text-shadow: 0 0 20px var(--primary), 0 0 30px #ff6666;
+            }
+        }
+
+        /* مشغل الموسيقى */
+        .music-bar {
+            background: var(--bg-dark);
+            border-radius: 15px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--card-border);
+        }
+
+        .music-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+
+        .music-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        /* التبويبات والأقسام الرئيسية */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            background: var(--bg-dark);
+            padding: 8px;
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-sub);
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* المحتوى */
+        .tab-content {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tab-content.active {
+            display: flex;
+        }
+
+        .card {
+            background: var(--bg-dark);
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px solid var(--card-border);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 8px;
+        }
+
+        /* أعضاء التيم */
+        .member-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .member-info h4 {
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .member-info p {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .chat-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .chat-btn:hover {
+            background: #1eb855;
+        }
+
+        /* الأزرار والروابط */
+        .btn-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-bg);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border: 1px solid var(--card-border);
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-link:hover {
+            background: rgba(255, 51, 51, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-link i {
+            font-size: 18px;
+            color: var(--primary);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* نماذج إدخال الباسورد والشكاوى */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .action-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .action-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        /* الحقوق والتطوير */
+        footer {
+            text-align: center;
+            padding: 15px;
+            color: var(--text-sub);
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="container">
+        
+        <!-- الهيدر -->
+        <header>
+            <img src="TEAM403_LOGO_NEW.jpg" alt="TEAM 403 Logo" class="logo">
+            <h1 class="main-title">TEAM 403</h1>
+            <div class="animated-text">اليكسير الأجنبي</div>
+        </header>
+
+        <!-- مشغل الموسيقى -->
+        <div class="music-bar">
+            <span><i class="fa-solid fa-music" style="color: var(--primary);"></i> موسيقى الموقع</span>
+            <button class="music-btn" onclick="toggleAudio()" id="musicBtn">
+                <i class="fa-solid fa-play"></i> شغل ي حبي🤤
+            </button>
+            <audio id="bgMusic" loop src="TEAM403_MUSIC_NEW.mp3"></audio>
+        </div>
+
+        <!-- التبويبات -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('general', event)">1- العام</button>
+            <button class="tab-btn" onclick="switchTab('admin', event)">2- الأدمن</button>
+            <button class="tab-btn" onclick="switchTab('dev', event)">3- المطور</button>
+        </nav>
+
+        <!-- ================= قسم العام ================= -->
+        <main id="general" class="tab-content active">
+            
+            <!-- أعضاء TEAM 403 -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-users" style="color: var(--primary);"></i>
+                    أعضاء TEAM 403
+                </div>
+
+                <!-- العضو 1 -->
+                <div class="member-card">
+                    <div class="member-info">
+                        <h4>اليكسير الاجنبي (@EXR_AGY)</h4>
+                        <p>قائد التيم</p>
+                    </div>
+                    <a href="https://wa.me/201559227221" target="_blank" class="chat-btn">
+                        تع ع شاتي <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+
+                <!-- العضو 2 -->
+                <div class="member-card">
+                    <div class="member-info">
+                        <h4>@wxx.1</h4>
+                        <p>ميتا تطير ارقام</p>
+                    </div>
+                    <a href="https://wa.me/?text=سلام%20عليكم%20جاي%20من%20موقع%20TEAM403" target="_blank" class="chat-btn">
+                        تع ع شاتي <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+
+                <!-- العضو 3 -->
+                <div class="member-card">
+                    <div class="member-info">
+                        <h4>ملوتوف (mtv_v7)</h4>
+                        <p>سحب بارات</p>
+                    </div>
+                    <a href="https://wa.me/?text=سلام%20عليكم%20جاي%20من%20موقع%20TEAM403" target="_blank" class="chat-btn">
+                        تع ع شاتي <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+
+                <!-- العضو 4 -->
+                <div class="member-card">
+                    <div class="member-info">
+                        <h4>بويكا (The_UnCle_Mahm0udd)</h4>
+                        <p>مطور مواقع</p>
+                    </div>
+                    <a href="https://wa.me/?text=سلام%20عليكم%20جاي%20من%20موقع%20TEAM403" target="_blank" class="chat-btn">
+                        تع ع شاتي <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- روابط سحوبات TEAM 403 -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
+                    سحوبات برعاية TEAM 403
+                </div>
+                <div class="grid-2">
+                    <a href="https://chat.whatsapp.com/FhP1ONJx8Bu5spsV2xotOq" target="_blank" class="btn-link">مجموعة 1 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://chat.whatsapp.com/JPPvgax19Mn0D0n4qrHrxt" target="_blank" class="btn-link">مجموعة 2 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://chat.whatsapp.com/EDC2KpVRa4oHTcCwFDLOEX" target="_blank" class="btn-link">مجموعة 3 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://chat.whatsapp.com/HHhFqQimJwA5XSMg7A9l14" target="_blank" class="btn-link">مجموعة 4 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://chat.whatsapp.com/GTOqQw8WEjbG8W6uV89k4x" target="_blank" class="btn-link">مجموعة 5 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://chat.whatsapp.com/LxDs1Qe66gk8OKgk2iQI58" target="_blank" class="btn-link">مجموعة 6 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://chat.whatsapp.com/EMFWTeghLCy7rnzxxnCyph" target="_blank" class="btn-link">مجموعة 7 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://chat.whatsapp.com/LIQRaxKEs7p1mjbr7kREEw" target="_blank" class="btn-link">مجموعة 8 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <!-- مجموعات إضافية -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-layer-group"></i>
+                    مجموعات إضافية
+                </div>
+                <a href="https://chat.whatsapp.com/HyC38KSiUAyFZJD4k7zzPa" target="_blank" class="btn-link">
+                    التعليم والبرمجة <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://chat.whatsapp.com/LMo3qv7v1qpCjgs8TTo5iV" target="_blank" class="btn-link">
+                    رغي TEAM 403 <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://whatsapp.com/channel/0029Vb7xmlQBVJkzQoTKnt2v" target="_blank" class="btn-link">
+                    قناة تشريد برعاية 403 <i class="fa-solid fa-bullhorn"></i>
+                </a>
+            </div>
+
+            <!-- التواصل مع اليكسير الأجنبي -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-headset"></i>
+                    التواصل مع اليكسير الأجنبي
+                </div>
+                <a href="https://wa.me/201559227221" target="_blank" class="btn-link">
+                    واتساب: 01559227221 <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://t.me/EXR_AGY_403" target="_blank" class="btn-link">
+                    تليجرام: @EXR_AGY_403 <i class="fa-brands fa-telegram"></i>
+                </a>
+            </div>
+
+            <!-- موقع TEAM 403 -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-globe"></i>
+                    موقع TEAM 403
+                </div>
+                <a href="https://m4637887-web.github.io/TEAM-403/" target="_blank" class="btn-link" style="justify-content: center; background: var(--primary);">
+                    موقع TEAM 403
+                </a>
+            </div>
+
+            <footer>
+                المطور: by boykaaa
+            </footer>
+        </main>
+
+        <!-- ================= قسم الأدمن ================= -->
+        <main id="admin" class="tab-content">
+            <div class="card" id="adminAuth">
+                <div class="card-title"><i class="fa-solid fa-lock"></i> دخول قسم الأدمن</div>
+                <div class="input-group">
+                    <input type="password" id="adminPass" placeholder="أدخل كلمة المرور">
+                    <button class="action-btn" onclick="checkAdminPass()">دخول</button>
+                </div>
+            </div>
+
+            <div class="card hidden" id="adminContent">
+                <div class="card-title"><i class="fa-solid fa-envelope-open-text"></i> الشكاوي والاقتراحات</div>
+                <form action="https://formspree.io/f/xbjnqkyj" method="POST" class="input-group" id="complaintForm">
+                    <input type="text" name="name" placeholder="الاسم" required>
+                    <input type="text" name="subject" placeholder="عنوان الشكوى أو الاقتراح" required>
+                    <textarea name="message" rows="4" placeholder="المشكلة بالتفصيل..." required></textarea>
+                    <button type="submit" class="action-btn">إرسال للسيستم</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- ================= قسم المطور ================= -->
+        <main id="dev" class="tab-content">
+            <div class="card" id="devAuth">
+                <div class="card-title"><i class="fa-solid fa-code"></i> دخول قسم المطور</div>
+                <div class="input-group">
+                    <input type="password" id="devPass" placeholder="أدخل كلمة المرور">
+                    <button class="action-btn" onclick="checkDevPass()">دخول</button>
+                </div>
+            </div>
+
+            <div class="card hidden" id="devContent">
+                <div class="card-title"><i class="fa-solid fa-user-gear"></i> معلومات المطور</div>
+                <h3 style="text-align: center; color: var(--primary); padding: 10px;">المطور: by boykaaa</h3>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        // التبديل بين التبويبات
+        function switchTab(tabId, event) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // تشغيل وإيقاف الموسيقى
+        function toggleAudio() {
+            const audio = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicBtn');
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = '<i class="fa-solid fa-pause"></i> وقف ي حبي';
+            } else {
+                audio.pause();
+                btn.innerHTML = '<i class="fa-solid fa-play"></i> شغل ي حبي🤤';
+            }
+        }
+
+        // التحقق من كلمة مرور الأدمن
+        function checkAdminPass() {
+            const pass = document.getElementById('adminPass').value;
+            if (pass === "403403") {
+                document.getElementById('adminAuth').classList.add('hidden');
+                document.getElementById('adminContent').classList.remove('hidden');
+            } else {
+                alert("كلمة المرور غير صحيحة!");
+            }
+        }
+
+        // التحقق من كلمة مرور المطور
+        function checkDevPass() {
+            const pass = document.getElementById('devPass').value;
+            if (pass === "0112233") {
+                document.getElementById('devAuth').classList.add('hidden');
+                document.getElementById('devContent').classList.remove('hidden');
+            } else {
+                alert("كلمة المرور غير صحيحة!");
+            }
+        }
+    </script>
+</body>
+</html>
